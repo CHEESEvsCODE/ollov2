@@ -1349,11 +1349,21 @@ body {
     background: rgba(0, 0, 0, 0.25) !important;
     display: inline-block;
   }
+
+  .reply-content {
+    margin-left: 20px;
+  }
+
+  .reply-author {
+    margin-left: 20px;
+  }
   
   .postcontent {
     font-size: 20px;
-    display: block;
-  }
+    display: flex;
+    flex: auto;
+    align-items: center;
+}
   
   li {
     list-style-type: disc;
