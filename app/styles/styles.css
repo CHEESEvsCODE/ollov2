@@ -258,10 +258,9 @@ body {
     background: #141A27;
     border-radius: 20px;
     margin-bottom: 30px;
+    margin: 30px;
     padding: 30px;
     color: #fff;
-    display: inline-block;
-    box-sizing: border-box;
   }
   
   .postcontent {

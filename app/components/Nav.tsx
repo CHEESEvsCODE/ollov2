@@ -14,17 +14,19 @@ export const loader = async ({ request }: LoaderArgs) => {
 
   const posts = await supabase.from("posts_with_likes").select().order('id', { ascending: false });
   const likes = await supabase.from("likes").select();
-
   const user = await supabase.auth.getUser()
+  const profile = await supabase.from("profiles").select("*").eq("id", user.data.session.user.id).single()
 
   return {
     user: user.data,
+    profile: profile.data
   }
     
 };
 
 export default function Nav() {
   const user = useLoaderData()
+  const profile = useLoaderData()
 
   return (
     <nav className="navbar flex justify-between justify-center">
@@ -48,7 +50,7 @@ export default function Nav() {
           <FontAwesomeIcon className="navicon" icon={["fas", "shapes"]} /> explore
         </Link>
         {user.session ? (
-          <Link className="flex center" to="/login">
+          <Link className="flex center" to={`/${profile}`}>
             {user?.session.user.user_metadata.avatar_url && (
               <img
                 className="avatar avatar2 center"
@@ -57,6 +59,7 @@ export default function Nav() {
                 alt="User Avatar"
               />
             )}
+            {JSON.stringify(profile.id)}
           </Link>
         ) : (!user.session && (
           <Link to="/login">
