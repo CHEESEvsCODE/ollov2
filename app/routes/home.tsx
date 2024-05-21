@@ -241,12 +241,14 @@ export default function UserPage() {
                       alt={userProfile.username}
                     />
                     <Tooltip id="avatarTooltip" />
+                    <div className="mt-10 flex justify-center">
                     <p className="reply-content">{reply.content}</p>
                     <p>
                       <span className="reply-author minutesago">
                         {formatDate(reply.created_at)}
                       </span>
                     </p>
+                    </div>
                   </div>
                 );
               })}
